@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khalayi, Be My Valentine ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #ff4d6d, #ff758f);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.25);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            max-width: 360px;
+            width: 90%;
+            position: relative;
+        }
+        h1 { font-size: 2.2rem; margin-bottom: 10px; }
+        h2 { font-size: 1.6rem; margin-top: 10px; }
+        p { font-size: 1.1rem; margin-bottom: 25px; }
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        #yesBtn { background: #fff; color: #ff4d6d; font-weight: bold; }
+        #noBtn {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            position: relative;
+        }
+        .love {
+            display: none;
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+        .hint {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background music -->
+    <!-- IMPORTANT:
+         1) Download “Better” by Lil Yachty legally.
+         2) Rename the file to: better.mp3
+         3) Upload it to the SAME GitHub repository as this index.html file.
+    -->
+    <audio id="bgMusic" loop>
+        <source src="better.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="card">
+        <div id="mainContent">
+            <h1>Khalayi ❤️</h1>
+            <p>Out of all the people in this world, I choose you. Always you.</p>
+            <h2>Will you be my Valentine? 💘</h2>
+            <button id="yesBtn" onclick="sayYes()">YES 💖</button>
+            <button id="noBtn" onmouseover="moveButton()">No 😅</button>
+            <div class="hint">Tap YES for a surprise 🎶</div>
+        </div>
+
+        <div class="love" id="loveMsg">
+            Yayyy Khalayi!! 💃❤️<br/>
+            You just made me the happiest person alive 😘<br/>
+            This song is for us.
+        </div>
+    </div>
+
+    <script>
+        function sayYes() {
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('loveMsg').style.display = 'block';
+
+            const music = document.getElementById('bgMusic');
+            music.play().catch(() => {
+                console.log("User interaction required to play music.");
+            });
+        }
+
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
